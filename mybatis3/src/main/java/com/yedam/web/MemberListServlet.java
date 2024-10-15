@@ -36,9 +36,8 @@ public class MemberListServlet extends HttpServlet {
 		SqlSession sqlSession = DataSource.getInstance().openSession(true);
         MemberMapper dao = sqlSession.getMapper(MemberMapper.class);
         List<Member> members = dao.members();
-        
+        out.print("<table>");
         for(Member member : members) {
-        	out.print("<table>");
         	out.print("<tr>");
         	out.print("<td>"+member.getMemberId()+"</td>");
         	out.print("<td>"+member.getMemberName()+"</td>");
@@ -47,8 +46,8 @@ public class MemberListServlet extends HttpServlet {
         	out.print("<td>"+member.getResponsibility()+"</td>");
         	out.print("<td>"+member.getCreationDate()+"</td>");
         	out.print("</tr>");
-        	out.print("</table>");
         }
+        out.print("</table>");
 	}
 
 
