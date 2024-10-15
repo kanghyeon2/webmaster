@@ -30,6 +30,10 @@
 		delete from tbl_member
 		where member_id = #{memberId}
 	</delete>
+	
+	<select id="members" resultType="com.yedam.vo.Member">
+		select * from tbl_member
+	</select>
 
 
 </mapper>
