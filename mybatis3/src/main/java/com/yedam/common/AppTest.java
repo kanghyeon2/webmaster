@@ -22,15 +22,15 @@ public class AppTest {
 //		if(dao.insertMember(mbr)==1) {
 //			sqlSession.commit();
 //		}
-		Member mbr = new Member();
-		mbr.setMemberId("test99");
-		mbr.setMemberName("연습99");
-		mbr.setPhone("010-8888-7845");
-		mbr.setPassword("999");
-		
-		if(dao.deleteMember(mbr)==1) {
-			sqlSession.commit();
-		}
+//		Member mbr = new Member();
+//		mbr.setMemberId("test99");
+//		mbr.setMemberName("연습99");
+//		mbr.setPhone("010-8888-7845");
+//		mbr.setPassword("999");
+//		
+//		if(dao.deleteMember(mbr)==1) {
+//			sqlSession.commit();
+//		}
 		
 
 		List<Member> result = dao.members();

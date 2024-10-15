@@ -21,7 +21,7 @@
 			,phone = #{phone}
 		</if>
 		<if test="passowrd != null">
-			,passowrd = #{passowrd}
+			,password = #{password}
 		</if>
 		where member_id = #{memberId}
 	</update>
@@ -31,9 +31,6 @@
 		where member_id = #{memberId}
 	</delete>
 	
-	<select id="members" resultType="com.yedam.vo.Member">
-		select * from tbl_member
-	</select>
 
 
 </mapper>
