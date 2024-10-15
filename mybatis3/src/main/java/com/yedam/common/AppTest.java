@@ -32,8 +32,7 @@ public class AppTest {
 			sqlSession.commit();
 		}
 		
-		
-		
+
 		List<Member> result = dao.members();
 		for(Member member : result) {
 			System.out.println(member.toString());
