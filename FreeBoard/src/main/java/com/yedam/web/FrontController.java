@@ -45,5 +45,6 @@ public class FrontController extends HttpServlet { // servlet
 		Control control = map.get(page);
 		control.exec(req,resp);
 	}
+	
 
 }
