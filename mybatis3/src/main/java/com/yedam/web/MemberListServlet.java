@@ -16,7 +16,8 @@ import com.yedam.common.DataSource;
 import com.yedam.dao.MemberMapper;
 import com.yedam.vo.Member;
 
-
+// IOC (제어의 역전)
+// 객체생성 -> init()	-> service() -> destroy() : 서블릿의 생명주기
 @WebServlet("/MemberListServlet")
 public class MemberListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,45 +37,27 @@ public class MemberListServlet extends HttpServlet {
 		SqlSession sqlSession = DataSource.getInstance().openSession(true);
         MemberMapper dao = sqlSession.getMapper(MemberMapper.class);
         List<Member> members = dao.members();
-        out.print("<table>");
+        out.print("<table border='1'>");
         for(Member member : members) {
         	out.print("<tr>");
-        	out.print("<td>"+member.getMemberId()+"</td>");
+        	out.print("<td><a href='member.action?member_id="+member.getMemberId()+"'>"+ member.getMemberId() +"</a></td>"); //링크 연결 <a href='member.action?member_id="+member.getMemberId()+"'>
         	out.print("<td>"+member.getMemberName()+"</td>");
         	out.print("<td>"+member.getPhone()+"</td>");
-        	out.print("<td>"+member.getPassword()+"</td>");
-        	out.print("<td>"+member.getResponsibility()+"</td>");
-        	out.print("<td>"+member.getCreationDate()+"</td>");
         	out.print("</tr>");
         }
         out.print("</table>");
+        
+        out.print("<a href='index.html'> 첫페이지로 이동 </a><br>");
+        out.print("<a href='MemberAddServlet'> 멤버에드 </a><br>");
+        out.print("<a href='/mybatis3/html/memberAdd.html'> 입력창 </a><br>");
+//        out.print("<a href='member.action'> 회원정보 </a><br>");
+
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		request.setCharacterEncoding("utf-8");
-////		doGet(request, response);
-//		//4개 파라미터
-//		String id = request.getParameter("mem_id");
-//		String name = request.getParameter("mem_name");
-//		String password = request.getParameter("mem_pwd");
-//		String phone = request.getParameter("mem_phone");
-//		
-//		Member member = new Member();
-//		member.setMemberId(id);
-//		member.setMemberName(name);
-//		member.setPassword(password);
-//		member.setPhone(phone);
-//		
-//		SqlSession sqlSession  = DataSource.getInstance().openSession(true)	; //true 자동커밋
-//		MemberMapper dao = sqlSession.getMapper(MemberMapper.class);
-//		try {
-//		if(dao.members(member)==1) {
-//			response.getWriter().print(member.getMemberId());
-//		}
-//	} catch(Exception e) {
-//		response.getWriter().print("NG");
-//	}
+		doGet(request, response);
+
 	}
 
 }

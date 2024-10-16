@@ -13,22 +13,22 @@ public class AppTest {
 		SqlSession sqlSession  = DataSource.getInstance().openSession()	;
 		MemberMapper dao = sqlSession.getMapper(MemberMapper.class);
 		//등록
-//		Member mbr = new Member();
-//		mbr.setMemberId("test99");
-//		mbr.setMemberName("연습99");
-//		mbr.setPhone("010-9999-9999");
-//		mbr.setPassword("9999");
-//		
-//		if(dao.insertMember(mbr)==1) {
-//			sqlSession.commit();
-//		}
+		Member mbr = new Member();
+		mbr.setMemberId("test99");
+		mbr.setMemberName("연습99");
+		mbr.setPhone("010-9999-9999");
+		mbr.setPassword("9999");
+		
+		if(dao.insertMember(mbr)==1) {
+			sqlSession.commit();
+		}
 //		Member mbr = new Member();
 //		mbr.setMemberId("test99");
 //		mbr.setMemberName("연습99");
 //		mbr.setPhone("010-8888-7845");
 //		mbr.setPassword("999");
 //		
-//		if(dao.deleteMember(mbr)==1) {
+//		if(dao.deleteMember(pwd)==1) {
 //			sqlSession.commit();
 //		}
 		
