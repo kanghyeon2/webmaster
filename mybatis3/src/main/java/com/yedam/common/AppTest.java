@@ -28,9 +28,9 @@ public class AppTest {
 //		mbr.setPhone("010-8888-7845");
 //		mbr.setPassword("999");
 //		
-//		if(dao.deleteMember()==1) {
-//			sqlSession.commit();
-//		}
+		if(dao.deleteMember(mbr.getMemberId())==1) {
+			sqlSession.commit();
+		}
 		
 
 		List<Member> result = dao.members();
