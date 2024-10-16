@@ -11,6 +11,6 @@ public interface MemberMapper {
 	public List<Member> members();
 	public int insertMember(Member member);
 	public int updateMember(Member member);
-	public int deleteMember(String id);
+	public int deleteMember(String memberid);
 	public Member selectMember(String memberId); //단건조회
 }
