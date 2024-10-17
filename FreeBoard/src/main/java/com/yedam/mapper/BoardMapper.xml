@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yedam.mapper.BoardMapper">
+	<select id="boardlist" resultType="board">
+		select board_no
+		,title
+		,content
+		,writer
+		,view_cnt
+		,write_date
+		,update_date
+		from tbl_board
+		order by board_no
+	</select>
+
+
+<select id="listWithPage" parameterType="int">
+		select b.*
+		from(select rownum rn, a.*
+			 from (select *
+			 	   from tbl_board
+				   order by board_no) a) b
+		where b.rn >  (#{page} - 1) * 5
+		<![CDATA[
+		and   b.rn <= (#{page} * 5)
+		]]>
+	</select>
+		<!-- ; 쓰지말기 -->
+	<insert id="insertBoard" parameterType="board">
+		insert into
+		tbl_board(board_no, title, content, writer)
+		values (board_seq.nextval,
+		#{title}, #{content}, #{writer})
+	</insert>
+
+	<update id="updateBoard" parameterType="board">
+		update tbl_board
+		set update_date = sysdate
+		<if test="title != null">
+			,title = #{title}
+		</if>
+		<if test="content != null">
+			,content = #{content}
+		</if>
+		where board_no = #{boardNo}
+	</update>
+
+	<delete id="deleteBoard" parameterType="int">
+		delete from tbl_board
+		where board_no = #{boardNo}
+	</delete>
+
+	<select id="selectBoard" parameterType="int">
+		select board_no
+		,title
+		,content
+		,writer
+		,view_cnt
+		,write_date
+		,update_date
+		from tbl_board
+		where
+		board_no = #{boardNo}
+	</select>
+
+	<!-- 조회수 -->
+	<update id="updateCount" parameterType="int">
+		update tbl_board
+		set
+		view_cnt = view_cnt + 1
+		where board_no = #{boardNo}
+	</update>
+
+	
+</mapper>
