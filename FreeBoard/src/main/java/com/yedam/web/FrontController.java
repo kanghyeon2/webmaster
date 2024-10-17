@@ -42,7 +42,7 @@ public class FrontController extends HttpServlet { // servlet
 		map.put("/modifyBoard.do", new ModifyBoardControl());
 		
 		//글삭제
-		map.put("/delteBoard.do", new DeleteBoardControl());
+		map.put("/deleteBoard.do", new DeleteBoardControl());
 
 		
 		
