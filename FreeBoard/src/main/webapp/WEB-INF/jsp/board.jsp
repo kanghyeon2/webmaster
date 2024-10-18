@@ -7,8 +7,11 @@
 <h3>상세페이지(board.jsp)</h3>
 <%
 BoardVO bvo = (BoardVO) request.getAttribute("boardvo");
+String pg = (String) request.getAttribute("page");
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 String wdate = sdf.format(bvo.getWriteDate());
+String sc = (String) request.getAttribute("searchCondition");
+String kw = (String) request.getAttribute("keyword");
 %>
 
 
@@ -48,7 +51,7 @@ String wdate = sdf.format(bvo.getWriteDate());
 <script>
 	document.querySelector('input[value="수정"]').addEventListener('click',
 			function(e) {
-				location.href = 'modifyBoard.do?bno=<%=bvo.getBoardNo()%>'
+				location.href = 'modifyBoard.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=pg %>&bno=<%=bvo.getBoardNo() %>'
 			});
 	document.querySelector('input[value="삭제"]').addEventListener('click',
 			function(e) {

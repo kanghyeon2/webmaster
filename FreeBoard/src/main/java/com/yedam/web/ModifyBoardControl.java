@@ -20,11 +20,21 @@ public class ModifyBoardControl implements Control {
 		// POST : 수정처리
 		req.setCharacterEncoding("utf-8");
 		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
+		String kw = req.getParameter("keyword");
+		String sc = req.getParameter("searchCondition");
+				
+		
+		
 		BoardService svc = new BoardServiceImpl();
 		if (req.getMethod().equals("GET")) {
 
 			BoardVO board = svc.searchBoard(Integer.parseInt(bno));
 			req.setAttribute("boardvo", board);
+			req.setAttribute("page", page);
+			req.setAttribute("keyword", kw);
+			req.setAttribute("searchCondition", sc);
+			
 			req.getRequestDispatcher("WEB-INF/jsp/modifyForm.jsp").forward(req, resp);
 
 		} else if (req.getMethod().equals("POST")) {
@@ -37,7 +47,7 @@ public class ModifyBoardControl implements Control {
 			
 			if(svc.modifyBoard(board)) {
 				//정상이면 목록으로
-				resp.sendRedirect("boardList.do");
+				resp.sendRedirect("boardList.do?page=" + page + "&searchCondition=" + sc + "&keyword=" + kw);
 			}else {
 				board = svc.searchBoard(Integer.parseInt(bno));
 				

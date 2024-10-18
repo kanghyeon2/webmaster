@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
+import com.yedam.common.SearchDTO;
 import com.yedam.mapper.BoardMapper;
 import com.yedam.vo.BoardVO;
 
@@ -13,7 +14,14 @@ public class AppTest {
 		SqlSession sqlSession = DataSource.getInstance().openSession();
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
-		List<BoardVO> list1 = mapper.listWithPage(3);
+		SearchDTO search = new SearchDTO()	;
+		search.setKeyword("user01");
+		search.setSearchCondition("W");
+		search.setPage(1);
+		
+		
+		
+		List<BoardVO> list1 = mapper.listWithPage(search);
 		for(BoardVO bvo : list1) {
 			System.out.println(bvo.toString());
 		}
@@ -29,10 +37,10 @@ public class AppTest {
 //	}
 
 		// 업데이트
-		BoardVO bvo = new BoardVO();
-		bvo.setContent("정상 작동중 [수정]");
-		bvo.setWriter("user01");
-		bvo.setBoardNo(5);
+//		BoardVO bvo = new BoardVO();
+//		bvo.setContent("정상 작동중 [수정]");
+//		bvo.setWriter("user01");
+//		bvo.setBoardNo(5);
 
 //	if(mapper.updateBoard(bvo)==1) {
 //		sqlSession.commit();
@@ -42,9 +50,9 @@ public class AppTest {
 //		sqlSession.commit();
 //	}
 
-		if (mapper.selectBoard(1) == null) {
-			System.out.println("조회된 내용이 없습니다.");
-		}
+//		if (mapper.selectBoard(1) == null) {
+//			System.out.println("조회된 내용이 없습니다.");
+//		}
 //		System.out.println(mapper.selectBoard(1));
 
 		// 목록 조회

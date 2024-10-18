@@ -17,19 +17,12 @@
  <table class='table'>
  <tr>
  	<th>글번호</th><td><%=board.getBoardNo() %></td>
- 	<th>조회</th><td><%=board.getViewCnt() %></td>
- 	
  </tr>
  
  <tr>
-	 <th>제목</th><td colspan="3"><input class="form-control" type="text" name="title" value="<%=board.getTitle()%>"></td>
+	 <td colspan="3"><h3>진짜로 삭제하시겠습니까?</h3></td>
  </tr>
- <tr>
- 	<th>내용</th><td colspan="3"><textarea class="form-control" name = "content" cols="30" rows="5"><%=board.getContent() %></textarea></td>
- </tr>
- <tr>
- 	<th>작성자</th><td colspan="3"><%=board.getWriter() %></td>
- </tr>
+ 
  <tr>
 	<td colspan='4' align='center'>
 		<input type="submit" value="삭제"  class='btn btn-success'>	
@@ -40,3 +33,10 @@
  </table>
  </form>
  <jsp:include page="../includes/footer.jsp"></jsp:include>
+ 
+ <script>
+	document.querySelector('input[value="취소"]').addEventListener('click',
+			function(e) {
+				location.href = 'boardList.do'
+			});
+</script>

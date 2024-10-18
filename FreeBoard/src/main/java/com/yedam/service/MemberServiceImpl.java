@@ -30,4 +30,11 @@ public class MemberServiceImpl implements MemberService{
 	public List<MemberVO> memberList() {
 		return mapper.members();
 	}
+	
+	//로그인
+	@Override
+	public MemberVO loginCheck(String id, String pwd) {
+		// TODO Auto-generated method stub
+		return mapper.loginMember(id, pwd);
+	}
 }

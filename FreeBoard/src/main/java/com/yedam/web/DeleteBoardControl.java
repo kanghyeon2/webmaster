@@ -32,7 +32,7 @@ public class DeleteBoardControl implements Control {
 			board.setTitle(title);
 			board.setContent(content);
 			
-			if(svc.removeBoard(Integer.parseInt(bno))) {
+			if(svc.deleteBoard(Integer.parseInt(bno))) {
 				//정상이면 목록으로
 				resp.sendRedirect("boardList.do");
 			}else {

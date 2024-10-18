@@ -6,12 +6,14 @@
  
  <%
  String msg = (String) request.getAttribute("msg");
+ String logId = (String) session.getAttribute("logId");
  %>
  
  <%if(msg!= null){ %>
  <p style="color: red;"><%=msg %></p>
  <%} %>
- <form action="addBoard.do" method ="get">
+ <form action="addBoard.do" method ="post">
+ <input class="form-control" type="hidden" name="writer" value="<%=logId %>">
  <table class='table'>
  <tr>
 	 <th>제목</th><td><input class="form-control" type="text" name="title"></td>
@@ -20,7 +22,7 @@
  	<th>내용</th><td><textarea class="form-control" name = "content" cols="30" rows="5"></textarea></td>
  </tr>
  <tr>
- 	<th>작성자</th><td><input class="form-control" type="text" name="writer"></td>
+ 	<th>작성자</th><td><%=logId %></td>
  </tr>
  <tr>
 	<td colspan='2'>

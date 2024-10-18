@@ -14,6 +14,9 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
+    <%
+    String logId = (String) session.getAttribute("logId");
+    %>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
@@ -22,8 +25,13 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberList.do">회원목록</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="memberAddForm.do">회원등록</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">게시글목록</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addBoardForm.do">게시글등록</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                    
+                    <%if(logId==null){ %>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인 화면</a>
+                    <%}else  {%>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addBoardForm.do">게시글 등록</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logOut.do">로그아웃</a>
+                    <%} %>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
                 </div>
             </div>

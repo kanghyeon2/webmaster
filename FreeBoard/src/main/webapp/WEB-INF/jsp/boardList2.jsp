@@ -5,8 +5,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 
 <jsp:include page="../includes/header.jsp"></jsp:include>
 
@@ -51,16 +49,14 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	//date포멧(2024-10-09 12:22:23)
 	String wdate = sdf.format(board.getWriteDate()); 
 %>
+<tr>
+<td><%=board.getBoardNo() %></td>
+<td><a href='board.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=paging.getPage() %>&bno=<%=board.getBoardNo() %>'><%=board.getTitle() %></a></td>
+
+<td><%=board.getWriter() %></td>
+<td><%=wdate %></td>
+</tr>
 <%} %>
-<c:forEach var="board" items="${boardList }">
-      <tr>
-         <td><c:out value="${board.boardNo }"/></a></td>
-         <td><a href='board.do?searchCondition=${searchCondition }&keyword=${keyword }&page=${paging.page }&bno=${board.boardNo}'>${board.title }</a></td>
-         <td><c:out value="${board.writer }"/></td>
-         <td><fmt:formatDate value="${board.writeDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-         <td><c:out value="${board.viewCnt }"/></td>
-      </tr>
-      </c:forEach>
 </table>
 <!-- <%= paging %>-->
 <nav aria-label="Page navigation example">
@@ -73,21 +69,18 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
       <a class="page-link">Previous</a>
       <%} %>
     </li>
-    <c:forEach var="p" begin="${ paging.getStartPage()}" end="${paging.getEndPage() }" step="1">
-	<c:choose>
-	<c:when test="${paging.getPage()==p }">
-	<li class="page-item active" aria-current="page">
-      	<span class="page-link">${p }</span>
+    <% for(int p = paging.getStartPage(); p <= paging.getEndPage(); p++){ %>
+    <%if(paging.getPage()==p){ %>
+     <li class="page-item active" aria-current="page"> <!-- 클릭했을때 활성화 -->
+      	<span class="page-link"><%=p %></span>
     </li>	
-    </c:when>
-    <c:when test="${paging.getpage()!=p }">	
+    <%} else { %>
     <li class="page-item">
-   		 <a class="page-link" href="boardList.do?searchCondition=${searchCondition }&keyword=${keyword}&page=${p }">${p }</a>
+   		 <a class="page-link" href="boardList.do?searchCondition=<%=sc %>&keyword=<%=kw %>&page=<%=p %>"><%=p %></a>
     </li> 
-	</c:when>
-	</c:choose>
-	</c:forEach>
- <%if(paging.isNext()) { %>
+    <%} %>
+    <%} %>
+    <%if(paging.isNext()) { %>
         <li class="page-item" aria-current="page">
               <a class="page-link" href="boardList.do?page=<%=paging.getEndPage()+1%>">Next</a>
     <% } else { %>

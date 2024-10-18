@@ -14,21 +14,22 @@ public class PageDTO {
 	private boolean prev, next;
 	private int page; //현재페이지
 	
-	public PageDTO(int page)	{
+	public PageDTO(int page, int totalCnt)	{
+//		int totalCnt = list.size();
+		this.page = page;
 		BoardService svc = new BoardServiceImpl();
 		List<BoardVO> list = svc.board();
-		int totalCnt = list.size();
 		
 //		int totalCnt = 3300;
 		this.endPage = (int)Math.ceil(page / 10.0) * 10;
 		this.startPage = this.endPage - 9;
 		
-		int realEnd = (int)Math.ceil(totalCnt / 5.0);
+		int realEnd = (int)Math.ceil(totalCnt / 5.0); //건수 계산 =>최종페이지.
 		this.endPage = this.endPage > realEnd ? realEnd : this.endPage;
 		
 		this.prev = this.startPage > 1;
 		this.next = this.endPage < realEnd;
 		
-		this.page = page;
+		
 	}
 }
