@@ -17,11 +17,11 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     PageDTO paging = (PageDTO) request.getAttribute("page");
     String sc = (String) request.getAttribute("searchCondition");
     String kw = (String) request.getAttribute("keyword");
-    kw = kw == null ? "" : kw; // null값을 처리하기
+    kw = kw == null ? "" : kw;
 %>
 
 
-<!-- 검색조건 -->
+
 <form action = "boardList.do" class="row g-3">
   <div class="col-md-3"> 
     <select name="searchCondition" class="form-select">
@@ -39,7 +39,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
   </div>
 </form>
 
-<!-- <p><%=list %></p>-->
+
 <table class="table">
 <thead>
 <tr>
@@ -47,53 +47,59 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 </tr>
 </thead>
 </tbody>
-<%for (BoardVO board : list) {
-	//date포멧(2024-10-09 12:22:23)
-	String wdate = sdf.format(board.getWriteDate()); 
-%>
-<%} %>
+
+
 <c:forEach var="board" items="${boardList }">
-      <tr>
-         <td><c:out value="${board.boardNo }"/></a></td>
-         <td><a href='board.do?searchCondition=${searchCondition }&keyword=${keyword }&page=${paging.page }&bno=${board.boardNo}'>${board.title }</a></td>
-         <td><c:out value="${board.writer }"/></td>
-         <td><fmt:formatDate value="${board.writeDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-         <td><c:out value="${board.viewCnt }"/></td>
-      </tr>
+     <tr>
+    <td><c:out value="${board.boardNo}"/></td>
+    <td><a href='board.do?searchCondition=${sc}&keyword=${kw}&page=${paging.page}&bno=${board.boardNo}'>${board.title}</a></td>
+    <td><c:out value="${board.writer}"/></td>
+    <td><fmt:formatDate value="${board.writeDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+  </tr>
       </c:forEach>
 </table>
-<!-- <%= paging %>-->
+
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
-    <%if(paging.isPrev()) { %>
-        <li class="page-item" aria-current="page">
-              <a class="page-link" href="boardList.do?page=<%=paging.getStartPage()-1%>">Previous</a>
-    <% } else { %>
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-      <%} %>
-    </li>
-    <c:forEach var="p" begin="${ paging.getStartPage()}" end="${paging.getEndPage() }" step="1">
-	<c:choose>
-	<c:when test="${paging.getPage()==p }">
-	<li class="page-item active" aria-current="page">
-      	<span class="page-link">${p }</span>
-    </li>	
-    </c:when>
-    <c:when test="${paging.getpage()!=p }">	
-    <li class="page-item">
-   		 <a class="page-link" href="boardList.do?searchCondition=${searchCondition }&keyword=${keyword}&page=${p }">${p }</a>
-    </li> 
-	</c:when>
-	</c:choose>
-	</c:forEach>
- <%if(paging.isNext()) { %>
-        <li class="page-item" aria-current="page">
-              <a class="page-link" href="boardList.do?page=<%=paging.getEndPage()+1%>">Next</a>
-    <% } else { %>
-    <li class="page-item disabled">
-      <a class="page-link">Next</a>
-      <%} %>
-    </li>
+    <c:choose>
+      <c:when test="${paging.isPrev()}">
+        <li class="page-item">
+          <a class="page-link" href="boardList.do?searchCondition=${sc}&keyword=${kw}&page=${paging.page - 1}">Previous</a>
+        </li>
+      </c:when>
+      <c:otherwise>
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+      </c:otherwise>
+    </c:choose>
+
+    <c:forEach var="p" begin="${paging.getStartPage()}" end="${paging.getEndPage()}">
+      <c:choose>
+        <c:when test="${paging.getPage() == p}">
+          <li class="page-item active">
+            <span class="page-link">${p}</span>
+          </li>	
+        </c:when>
+        <c:otherwise>
+          <li class="page-item">
+            <a class="page-link" href="boardList.do?searchCondition=${sc}&keyword=${kw}&page=${p}">${p}</a>
+          </li>
+        </c:otherwise>
+      </c:choose>
+    </c:forEach>
+
+    <c:choose>
+      <c:when test="${paging.isNext()}">
+        <li class="page-item">
+          <a class="page-link" href="boardList.do?searchCondition=${sc}&keyword=${kw}&page=${paging.page + 1}">Next</a>
+        </li>
+      </c:when>
+      <c:otherwise>
+        <li class="page-item disabled">
+          <a class="page-link">Next</a>
+        </li>
+      </c:otherwise>
+    </c:choose>
   </ul>
 </nav>
