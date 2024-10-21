@@ -46,9 +46,8 @@
 	<!-- ; 쓰지말기 -->
 	<insert id="insertBoard" parameterType="board">
 		insert into
-		tbl_board(board_no, title, content, writer)
-		values (board_seq.nextval,
-		#{title}, #{content}, #{writer})
+		tbl_board(board_no, title, content, writer, img)
+		values (board_seq.nextval, #{title}, #{content}, #{writer}, #{img})
 	</insert>
 
 	<update id="updateBoard" parameterType="board">
@@ -76,6 +75,7 @@
 		,view_cnt
 		,write_date
 		,update_date
+		,img
 		from tbl_board
 		where
 		board_no = #{boardNo}

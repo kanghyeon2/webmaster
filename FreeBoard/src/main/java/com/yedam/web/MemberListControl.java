@@ -22,7 +22,7 @@ public class MemberListControl implements Control{
 		
 		try {
 			//memberList.do 요청 페이지에서 memberList.jsp 요청재지정 보여지는것은 memberlist.do 이지만 요청하는거승 memberlist.jsp
-			req.getRequestDispatcher("WEB-INF/jsp/memberList.jsp").forward(req, resp);
+			req.getRequestDispatcher("admin/memberList.tiles").forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

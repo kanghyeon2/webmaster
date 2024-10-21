@@ -3,17 +3,15 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <jsp:include page="../includes/header.jsp"></jsp:include>
 <h3>상세페이지(board.jsp)</h3>
 <%
 BoardVO bvo = (BoardVO) request.getAttribute("boardvo");
-SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 String pg = (String) request.getAttribute("page");
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+String wdate = sdf.format(bvo.getWriteDate());
 String sc = (String) request.getAttribute("searchCondition");
 String kw = (String) request.getAttribute("keyword");
-String wdate = sdf.format(bvo.getWriteDate());
 %>
 
 
@@ -36,9 +34,7 @@ String wdate = sdf.format(bvo.getWriteDate());
 	</tr>
 	<tr>
 		<th>이미지</th>
-	<%if (bvo.getImg() != null) {%>
 		<td colspan="3"><img src="images/<%=bvo.getImg() %>" width="100px"></td>
-		<%} %>
 	</tr>
 	<tr>
 		<th>작성일시</th>

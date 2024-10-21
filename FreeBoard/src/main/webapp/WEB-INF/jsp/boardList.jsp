@@ -8,8 +8,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 
-<jsp:include page="../includes/header.jsp"></jsp:include>
-
 <h3>글목록(boardList.jsp)</h3>
 <%
 List<BoardVO> list = (List<BoardVO>)request.getAttribute("boardlist");
@@ -49,7 +47,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 </tbody>
 
 
-<c:forEach var="board" items="${boardList }">
+<c:forEach var="board" items="${boardlist }">
      <tr>
     <td><c:out value="${board.boardNo}"/></td>
     <td><a href='board.do?searchCondition=${sc}&keyword=${kw}&page=${paging.page}&bno=${board.boardNo}'>${board.title}</a></td>

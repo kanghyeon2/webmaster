@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.yedam.common.Control;
 import com.yedam.service.MemberService;
 import com.yedam.service.MemberServiceImpl;
+import com.yedam.vo.MemberVO;
 
 public class LoginControl implements Control {
 
@@ -22,14 +23,15 @@ public class LoginControl implements Control {
 		
 
 		if (req.getMethod().equals("GET")) {
-			req.getRequestDispatcher("WEB-INF/jsp/loginForm.jsp").forward(req, resp);
+			req.getRequestDispatcher("WEB-INF/jsp/logForm.jsp").forward(req, resp);
 		} else if(req.getMethod().equals("POST")) {
 			
 			MemberService svc = new MemberServiceImpl();
+			MemberVO member = svc.loginCheck(id, pwd);
 			//로그인 실패
-			if(svc.loginCheck(id, pwd) == null) {
+			if(member == null) {
 				req.setAttribute("msg", "아이디와비밀번호 확인");
-				req.getRequestDispatcher("WEB-INF/jsp/loginForm.jsp").forward(req, resp);
+				req.getRequestDispatcher("WEB-INF/jsp/logForm.jsp").forward(req, resp);
 				return;
 				
 			}
@@ -37,8 +39,10 @@ public class LoginControl implements Control {
 			//정상로그인 session객체
 			HttpSession session = req.getSession(); 
 			session.setAttribute("logId", id); // 로그인 아이디를 세션에 저장해서 다른곳에서 request가 아닌 session으로 사용
-			
+			if(member.getResponsibility().equals("User"))
 			resp.sendRedirect("boardList.do");
+			else if(member.getResponsibility().equals("Admin"))
+				resp.sendRedirect("memberList.do");
 		}
 
 	}

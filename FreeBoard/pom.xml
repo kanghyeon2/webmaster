@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-		
+
 		<!-- ojdbc 라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc10 -->
 		<dependency>
@@ -16,8 +16,8 @@
 			<artifactId>ojdbc10</artifactId>
 			<version>19.3.0.0</version>
 		</dependency>
-		
-		
+
+
 		<!-- lombok 라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
@@ -26,7 +26,7 @@
 			<version>1.18.34</version>
 			<scope>provided</scope>
 		</dependency>
-	
+
 		<!-- mybtis 라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
@@ -34,7 +34,7 @@
 			<artifactId>mybatis</artifactId>
 			<version>3.5.16</version>
 		</dependency>
-		
+
 		<!-- ojdbc 라이브러리 -->
 		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
 		<dependency>
@@ -42,18 +42,44 @@
 			<artifactId>logback-classic</artifactId>
 			<version>1.5.11</version>
 		</dependency>
-		
-		
-	<dependency>
-      <groupId>org.apache.taglibs</groupId>
-      <artifactId>taglibs-standard-spec</artifactId>
-      <version>1.2.5</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.taglibs</groupId>
-      <artifactId>taglibs-standard-impl</artifactId>
-      <version>1.2.5</version>
-    </dependency>
+
+
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-spec</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.servlets/cos -->
+		<dependency>
+			<groupId>com.servlets</groupId>
+			<artifactId>cos</artifactId>
+			<version>05Nov2002</version>
+		</dependency>
+
+<!-- https://tiles.apache.org/download.html -->
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>3.0.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>3.0.8</version>
+		</dependency>
 
 	</dependencies>
 

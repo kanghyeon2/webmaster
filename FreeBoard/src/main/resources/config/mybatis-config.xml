@@ -9,6 +9,7 @@
 
 	<settings>
 		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<typeAliases>
 		<typeAlias alias="member" type="com.yedam.vo.MemberVO" />
