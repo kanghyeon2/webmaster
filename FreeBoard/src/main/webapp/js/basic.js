@@ -1,5 +1,34 @@
 /**
  * basic.js
+ * 	<ul>
+		<li>Apple</li>
+		<li>Banana</li>
+		<!-- <li>Cherry</li> -->
+	</ul>
+	<table border="1">
+		<tbody>
+			<tr>
+				<th>이름</th>
+				<td>김예담</td>
+			</tr>
+			<!-- <tr>
+				<th>이름</th>
+				<td>홍길동</td>
+			</tr>
+			 -->
+		</tbody>
+	</table>
+	<table border="2">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>나이</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+		</tbody>
+	</table>
  */
 
 console.log("basic.js")

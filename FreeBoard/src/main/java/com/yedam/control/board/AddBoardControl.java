@@ -1,4 +1,4 @@
-package com.yedam.web;
+package com.yedam.control.board;
 
 import java.io.IOException;
 
@@ -17,7 +17,7 @@ public class AddBoardControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
 		String savePath = req.getServletContext().getRealPath("images");
 		int maxSize = 1024 * 1025 * 5;
 

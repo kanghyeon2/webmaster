@@ -1,4 +1,4 @@
-package com.yedam.web;
+package com.yedam.control.member;
 
 import java.io.IOException;
 
@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class JavaScriptControl implements Control {
+public class AddBoardFormControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("etc/javascript.tiles").forward(req, resp);
+		// addBoardForm.do -> boardForm.jsp
+		req.getRequestDispatcher("WEB-INF/jsp/boardForm.jsp").forward(req, resp);
 		
+
 	}
 
 }

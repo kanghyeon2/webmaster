@@ -11,6 +11,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.contorl.JavaScriptControl;
+import com.yedam.control.board.AddBoardControl;
+import com.yedam.control.board.BoardControl;
+import com.yedam.control.board.BoardListControl;
+import com.yedam.control.board.DeleteBoardControl;
+import com.yedam.control.board.ModifyBoardControl;
+import com.yedam.control.member.AddBoardFormControl;
+import com.yedam.control.member.AddMemberJsonControl;
+import com.yedam.control.member.DeleteMemberControl;
+import com.yedam.control.member.LogOutControl;
+import com.yedam.control.member.LoginControl;
+import com.yedam.control.member.MemberAddControl;
+import com.yedam.control.member.MemberAddFormControl;
+import com.yedam.control.member.MemberJsonControl;
+import com.yedam.control.member.MemberListControl;
+import com.yedam.control.reply.ReplyListControl;
 
 //@WebServlet("*.do")
 public class FrontController extends HttpServlet { // servlet
@@ -51,7 +67,13 @@ public class FrontController extends HttpServlet { // servlet
 		//자바스크립트 연습
 		map.put("/javascript.do", new JavaScriptControl());
 
+		//json 관련
+		map.put("/memberJson.do", new MemberJsonControl());		
+		map.put("/addMemberJson.do", new AddMemberJsonControl());		
+		map.put("/removeMemberJson.do", new DeleteMemberControl());
 		
+		//댓글관련
+		map.put("/replyList.do", new ReplyListControl());
 		
 	}
 

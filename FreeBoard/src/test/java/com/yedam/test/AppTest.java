@@ -1,30 +1,40 @@
 package com.yedam.test;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
-import com.yedam.common.SearchDTO;
-import com.yedam.mapper.BoardMapper;
-import com.yedam.vo.BoardVO;
+import com.yedam.mapper.ReplyMapper;
+import com.yedam.service.ReplyService;
+import com.yedam.service.ReplyServiceImpl;
+import com.yedam.vo.ReplyVO;
 
 public class AppTest {
 	public static void main(String[] args) {
-		SqlSession sqlSession = DataSource.getInstance().openSession();
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		SqlSession sqlSession = DataSource.getInstance().openSession(true);
+		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
+		ReplyService svc =new ReplyServiceImpl();
 		
-		SearchDTO search = new SearchDTO()	;
-		search.setKeyword("user01");
-		search.setSearchCondition("W");
-		search.setPage(1);
-		
-		
-		
-		List<BoardVO> list1 = mapper.listWithPage(search);
-		for(BoardVO bvo : list1) {
-			System.out.println(bvo.toString());
-		}
+//		SearchDTO search = new SearchDTO()	;
+//		search.setKeyword("user01");
+//		search.setSearchCondition("W");
+//		search.setPage(1);
+//		
+//		
+//		
+//		List<BoardVO> list1 = mapper.listWithPage(search);
+//		for(BoardVO bvo : list1) {
+//			System.out.println(bvo.toString());
+//		}
+//		svc.replyList(210).forEach(reply -> System.out.println(reply));
+	
+//		ReplyVO rvo = mapper.selectReply(4);
+//		System.out.println(rvo.getBoardNo() + rvo.getReply());
+//		
+//		svc.removeReply(4);
+//		if (mapper.selectReply(4) == null) {
+//			System.out.println("조회된 내용이 없습니다.");
+//		} else
+//			System.out.println(mapper.selectReply(4));
 
 		// 삽입
 //	BoardVO bvo= new BoardVO();
