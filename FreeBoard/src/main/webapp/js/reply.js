@@ -13,7 +13,7 @@ svc.replylist(212//bno
 				td.innerHTML = result[i][fields[j]]
 				tr.appendChild(td);
 			}
-			document.querySelector('#replayList tbody').appendChild(tr);
+			document.querySelector('#replyList tbody').appendChild(tr);
 		}
 	}	//successFnc 
 	, function(err) {
