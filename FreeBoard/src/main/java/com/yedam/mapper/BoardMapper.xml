@@ -13,7 +13,7 @@
 		,write_date
 		,update_date
 		from tbl_board
-		order by board_no
+		order by board_no desc
 	</select>
 
 

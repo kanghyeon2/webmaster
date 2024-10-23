@@ -1,4 +1,4 @@
-package com.yedam.control.member;
+package com.yedam.control.reply;
 
 import java.io.IOException;
 
@@ -7,20 +7,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
-import com.yedam.service.MemberService;
-import com.yedam.service.MemberServiceImpl;
+import com.yedam.service.ReplyService;
+import com.yedam.service.ReplyServiceImpl;
 
-public class DeleteMemberControl implements Control {
+public class RemoveReplyControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String id = req.getParameter("id");
+		// 파라미터: rno삭제 -> OK/FAIL json 형태
+		String rno = req.getParameter("rno");
 		
-		MemberService svc = new MemberServiceImpl();
-		if(svc.retireMember(id)) {
+		ReplyService svc = new ReplyServiceImpl();
+		if(svc.removeReply(Integer.parseInt(rno))) {
 			resp.getWriter().print("{\"retCode\": \"OK\"}");
-		}else {
+		}else{
 			resp.getWriter().print("{\"retCode\": \"FAIL\"}");
 		}
 	}
