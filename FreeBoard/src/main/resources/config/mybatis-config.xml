@@ -17,6 +17,7 @@
 		<typeAlias alias="member" type="com.yedam.vo.MemberVO" />
 		<typeAlias alias="board" type="com.yedam.vo.BoardVO"/>
 		<typeAlias alias="reply" type="com.yedam.vo.ReplyVO"/>
+		<typeAlias alias="event" type="com.yedam.vo.EventVO"/>
 		
 	</typeAliases>
 	<environments default="development">

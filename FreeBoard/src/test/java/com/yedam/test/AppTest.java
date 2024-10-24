@@ -1,19 +1,34 @@
 package com.yedam.test;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.yedam.common.DataSource;
 import com.yedam.mapper.ReplyMapper;
-import com.yedam.service.ReplyService;
-import com.yedam.service.ReplyServiceImpl;
-import com.yedam.vo.ReplyVO;
+import com.yedam.service.BoardService;
+import com.yedam.service.BoardServiceImpl;
 
 public class AppTest {
 	public static void main(String[] args) {
 		SqlSession sqlSession = DataSource.getInstance().openSession(true);
 		ReplyMapper mapper = sqlSession.getMapper(ReplyMapper.class);
-		ReplyService svc =new ReplyServiceImpl();
+		/*BoardService svc =new BoardServiceImpl();
+		List<Map<String, Object>> result = svc.countByWriter();
 		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json =  gson.toJson(result);*/
+		
+		
+		BoardService svc =new BoardServiceImpl();
+		List<Map<String, Object>> list = svc.eventList();
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json =  gson.toJson(list);
+		System.out.println(json);
 //		SearchDTO search = new SearchDTO()	;
 //		search.setKeyword("user01");
 //		search.setSearchCondition("W");

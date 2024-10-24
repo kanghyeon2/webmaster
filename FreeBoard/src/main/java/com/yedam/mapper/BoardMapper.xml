@@ -13,7 +13,8 @@
 		,write_date
 		,update_date
 		from tbl_board
-		order by board_no desc
+		order by board_no
+		desc
 	</select>
 
 
@@ -32,7 +33,8 @@
 					writer like '%'||#{keyword}||'%'
 				</when>
 				<when test="searchCondition == 'TW'.toString() ">
-					(title like '%'||#{keyword}||'%') or (writer like '%'||#{keyword}||'%')
+					(title like '%'||#{keyword}||'%') or (writer like
+					'%'||#{keyword}||'%')
 				</when>
 			</choose>
 		</where>
@@ -47,7 +49,8 @@
 	<insert id="insertBoard" parameterType="board">
 		insert into
 		tbl_board(board_no, title, content, writer, img)
-		values (board_seq.nextval, #{title}, #{content}, #{writer}, #{img})
+		values
+		(board_seq.nextval, #{title}, #{content}, #{writer}, #{img})
 	</insert>
 
 	<update id="updateBoard" parameterType="board">
@@ -102,9 +105,35 @@
 					writer like '%'||#{keyword}||'%'
 				</when>
 				<when test="searchCondition == 'TW'.toString() ">
-					(title like '%'||#{keyword}||'%') or (writer like '%'||#{keyword}||'%')
+					(title like '%'||#{keyword}||'%') or (writer like
+					'%'||#{keyword}||'%')
 				</when>
 			</choose>
 		</where>
 	</select>
+	<select id="countByWrtier" resultType="hashmap">
+		select writer as "writer",
+		member_name as"member_name", count(1) as"count"
+		from tbl_board b
+		join
+		tbl_member m
+		on b.writer = m.member_id
+		group by writer,member_name
+	</select>
+	<select id="eventList" resultType="hashmap">
+		select title as "title",
+				start_date as"start",
+				end_date as "end" 
+		from tbl_event
+	</select>
+	
+	<insert id="selectEvent" parameterType="event">
+		insert into 
+		tbl_event(title, start_date, end_date)
+		values(#{title}, #{startDate}, #{endDate})
+	</insert>
+	<delete id="deleteEvent" parameterType="event">
+		delete from tbl_event
+		where title = #{title}
+	</delete>
 </mapper>
