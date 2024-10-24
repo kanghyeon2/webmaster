@@ -31,6 +31,7 @@ public class AddMemberJsonControl implements Control {
 			//{"retCode": "FAIL"}
 			e.printStackTrace();
 			resp.getWriter().print("{\"retCode\": \"FAIL\"}");
+			
 		}
 
 	}
