@@ -100,6 +100,7 @@ public class FrontController extends HttpServlet { // servlet
 		map.put("/exe.do", new ExeControl());
 		map.put("/deleteExe", new DeleteExeControl());
 		
+		
 	}
 
 	@Override
