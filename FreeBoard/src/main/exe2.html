@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function (e) {
+      createCalender(document.querySelector('#list'));
+    })
+
+    function createCalender(target) {
+      let tr = document.createElement('tr');
+      // 일, 월에 대한 2칸(space)을 비워주기.
+      let space = 2;
+      let lastDate = 31;
+      for (let i = 0; i < space; i++) {
+        let td = document.createElement('td');
+        tr.appendChild(td);
+      }
+      for (let d = 1; d <= lastDate; d++) {
+        let td = document.createElement('td');
+
+        if ((d + space) % 7 == 1) { // 일요일.
+          td.style.color = 'red';
+        }
+        if ((d + space) % 7 == 0) { // 토요일.
+          td.style.color = 'blue';
+        }
+
+        td.innerHTML = d;
+        tr.appendChild(td);
+        if ((d + space) % 7 == 0) { // 2칸 밀린칸을 반영하기.
+          target.appendChild(tr);
+          tr = document.createElement('tr'); // 토요일(7번 td를 생성하면)이 되면 tr을 새롭게 생성.
+        }
+      }
+      target.appendChild(tr);
+    }
+  </script>
+</head>
+
+<body>
+
+  <div id="show">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thr</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody id="list"></tbody>
+    </table>
+
+  </div>
+
+</body>
+
+</html>
