@@ -14,6 +14,8 @@ import com.yedam.common.Control;
 import com.yedam.contorl.EventListControl;
 import com.yedam.contorl.ChartControl;
 import com.yedam.contorl.CountByWriterControl;
+import com.yedam.contorl.DeleteExeControl;
+import com.yedam.contorl.ExeControl;
 import com.yedam.contorl.AddEventControl;
 import com.yedam.contorl.CalendarControl;
 import com.yedam.contorl.JavaScriptControl;
@@ -95,7 +97,8 @@ public class FrontController extends HttpServlet { // servlet
 		map.put("/eventList.do", new EventListControl());
 		map.put("/addEvent.do", new AddEventControl());
 		map.put("/removeEvent.do", new RemoveEventControl());
-		
+		map.put("/exe.do", new ExeControl());
+		map.put("/deleteExe", new DeleteExeControl());
 		
 	}
 

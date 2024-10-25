@@ -34,7 +34,7 @@
                      <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addBoardForm.do">게시글 등록</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logOut.do">로그아웃</a>
                     <%} %>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="calendar.do">달력</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
