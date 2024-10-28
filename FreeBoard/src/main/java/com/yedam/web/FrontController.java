@@ -98,7 +98,6 @@ public class FrontController extends HttpServlet { // servlet
 		map.put("/addEvent.do", new AddEventControl());
 		map.put("/removeEvent.do", new RemoveEventControl());
 		map.put("/exe.do", new ExeControl());
-		map.put("/deleteExe", new DeleteExeControl());
 		
 		
 	}

@@ -41,5 +41,5 @@
 
 <!--<script src="js/data.js"></script>-->
 <!--<script src="js/json.js"></script>-->
-<!--<script src="js/members.js"></script>-->
-<script src="js/ajax1.js"></script>
+<script src="js/members.js"></script>
+<!-- <script src="js/ajax1.js"></script> -->

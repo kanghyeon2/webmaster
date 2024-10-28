@@ -10,19 +10,32 @@
       createCalender(document.querySelector('#list'));
     })
 
-    // 달력생성함수.
     function createCalender(target) {
       let tr = document.createElement('tr');
-      for (let d = 1; d <= 31; d++) {
+      // 일, 월에 대한 2칸(space)을 비워주기.
+      let space = 2;
+      let lastDate = 31;
+      for (let i = 0; i < space; i++) {
         let td = document.createElement('td');
+        tr.appendChild(td);
+      }
+      for (let d = 1; d <= lastDate; d++) {
+        let td = document.createElement('td');
+
+        if ((d + space) % 7 == 1) { // 일요일.
+          td.style.color = 'red';
+        }
+        if ((d + space) % 7 == 0) { // 토요일.
+          td.style.color = 'blue';
+        }
+
         td.innerHTML = d;
         tr.appendChild(td);
-        if (d % 7 == 0) {
-          document.querySelector('#list').appendChild(tr);
+        if ((d + space) % 7 == 0) { // 2칸 밀린칸을 반영하기.
+          target.appendChild(tr);
           tr = document.createElement('tr'); // 토요일(7번 td를 생성하면)이 되면 tr을 새롭게 생성.
         }
       }
-        let span1 = document.querySelectorAll('td')
       target.appendChild(tr);
     }
   </script>

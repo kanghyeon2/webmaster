@@ -66,6 +66,7 @@ function makeRow(obj = {}) {
 }
 
 function deleteRowFnc(e) { 
+	console.log(e);
 	//console.dir(e.target.parentElement.parentElement.firstElementChild.innerText);
 	console.dir(e.target.parentElement.parentElement.dataset.id);
 	let id = e.target.parentElement.parentElement.dataset.id;

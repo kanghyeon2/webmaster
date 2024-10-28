@@ -20,6 +20,7 @@ public class ReplyListControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 게시글번호(bno),페이지번호(page) 받아오기
 		resp.setContentType("text/json;charset=utf-8");
+		
 		String bno = req.getParameter("bno");
 		String page = req.getParameter("page");
 		
