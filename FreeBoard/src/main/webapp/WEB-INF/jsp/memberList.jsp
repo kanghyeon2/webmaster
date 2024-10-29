@@ -13,6 +13,11 @@
 	%>
 	<table class="table">
 		<tbody>
+		<tr>
+				<td>아이디</td>
+				<td>이름</td>
+				<td>폰</td>
+			</tr>
 			<%
 			for (MemberVO mvo : list) {
 			%>

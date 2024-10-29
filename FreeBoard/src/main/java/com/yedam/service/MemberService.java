@@ -11,7 +11,7 @@ public interface MemberService {
 	
 	
 	//회원 목록
-	List<MemberVO>memberList();
+	List<MemberVO> memberList();
 	
 	//로그인
 	MemberVO loginCheck(String id, String pwd);

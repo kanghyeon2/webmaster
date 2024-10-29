@@ -35,10 +35,17 @@
 		<tr>
 			<td colspan='2'>
 			<input type="submit" value="저장" class='btn btn-success'> 
-			<input type="reset" value="취소" class='btn btn-danger'></td>
+			<input type="reset" value="취소" class='btn btn-danger' ></td>
 		</tr>
 
 	</table>
 </form>
 
 <jsp:include page="../includes/footer.jsp"></jsp:include>
+
+ <script>
+	document.querySelector('input[value="취소"]').addEventListener('click',
+			function(e) {
+				location.href = 'boardList.do'
+			});
+</script>
