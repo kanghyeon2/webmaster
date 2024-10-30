@@ -31,7 +31,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">${product.prdName }</h5>
+                                    <a href="productInfo.do?prdCode=${product.prdCode}"><h5 class="fw-bolder">${product.prdName }</h5></a>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
                                         <c:forEach begin='1' end='${product.starPoint }'>
