@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function() {
+	$("#plus_btn").on("click", function(e) {
+		$("#right_select").append($("#left_select :selected")); // selected option 선택값 가져오기
+	});
+});
+$(function() {
+	$("#minus_btn").on("click", function(e) {
+		$("#left_select").append($("#right_select :selected"));
+	});
+});
+
+/*$(function() {
+	document.querySelector('#plus_btn').addEventListener('click', function(e){
+		let list = document.querySelector('#left_select');
+		list.querySelectorAll('option').forEach((item, idx)=>{
+			if(idx==1){
+				item.append
+			}
+		})
+	})
+})*/
+</script>
+</head>
+
+<body>
+	<select multiple style="height: 150px" id="left_select">
+		<option>option1</option>
+		<option>option2</option>
+		<option>option3</option>
+		<option>option4</option>
+		<option>option5</option>
+	</select>
+	<button id ="plus_btn">+</button>
+	<button id ="minus_btn">-</button>
+	<select multiple style="height: 150px" id="right_select">
+		<option>option6</option>
+		<option>option7</option>
+		<option>option8</option>
+		<option>option9</option>
+		<option>option10</option>
+	</select>
+</body>
+
+</html>
