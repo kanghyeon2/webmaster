@@ -19,25 +19,24 @@
 	</select>
 	
 	<select id="productList" resultType="co.yedam.vo.ProductVO">
-		select prd_name,
-			   origin_price,
-			   sale_price,
-			   star_point,
-			   prod_image
+		select *
 		from product_tbl
 	</select>
 	
-	<select id="selectProduct" parameterType="string">
-	select prd_code,
-		   prd_name,
-		   prd_desc,
-		   origin_price,
-		   sale_price,
-		   prod_image
+	<select id="selectProduct" resultType="co.yedam.vo.ProductVO" parameterType="string">
+	select *
 	from product_tbl
 	where prd_code = #{prdCode}
-		   
+	</select>
 	
+	<select id="starList" resultType="co.yedam.vo.ProductVO">
+	select * 
+    from(select *
+		from product_tbl
+		order by star_point desc)
+		<![CDATA[
+    	 where rownum < 5	
+    	 ]]>	 
 	</select>
 	
 </mapper>

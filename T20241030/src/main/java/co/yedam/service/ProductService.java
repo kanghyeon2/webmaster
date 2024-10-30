@@ -9,6 +9,7 @@ public interface ProductService {
 	String hintMessage(String remainTimeString);
 	
 	
-	List<ProductVO> productList();
+	List<ProductVO> products();
 	ProductVO searchProduct(String prdCode);
+	List<ProductVO> stars();
 }

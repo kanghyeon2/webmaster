@@ -29,7 +29,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> productList() {
+	public List<ProductVO> products() {
 		return mapper.productList();
+	}
+
+	@Override
+	public List<ProductVO> stars() {
+		return mapper.starList();
 	}
 }

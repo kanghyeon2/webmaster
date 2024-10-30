@@ -1,6 +1,7 @@
 package co.yedam.web;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,10 +22,12 @@ public class ProductControl implements Control {
 		
 		ProductService svc = new ProductServiceImpl();
 		ProductVO product = svc.searchProduct(prdCode);
+		List<ProductVO> stars= svc.stars();
 		
-		req.setAttribute("productvo", product);
+		req.setAttribute("prd", product);
+		req.setAttribute("stars", stars);
 		
-		req.getRequestDispatcher("product/productInfo.tiles").forward(req, resp);
+		req.getRequestDispatcher("productInfo.tiles").forward(req, resp);
 
 	}
 

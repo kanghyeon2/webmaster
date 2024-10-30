@@ -11,5 +11,7 @@ public interface ProductMapper {
 	List<ProductVO> productList();
 	
 	ProductVO selectProduct(String prdCode);
+	
+	List<ProductVO> starList();
 
 }
