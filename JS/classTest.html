@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classTest.html</title>
+    <style>
+        .active {
+            color : red;
+            font-size: 2em;
+        }
+        .highlight {
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+    <div class="active">사과</div>
+    <div>바나나</div>
+    <div>키위</div>
+    <button id="btnSelect">선택한 과일은?</button>
+    <script>
+        document.body.addEventListener("click", ()=>{
+            if(event.target.tagName == "DIV"){
+            event.target.classList.toggle("active");
+        }
+        })
+        // //div
+        // var divs = document.getElementsByTagName("div");
+
+        // for(i=0; i<divs.length; i++){
+        //     divs[i].addEventListener("click", ()=>{
+        //         event.target.classList.toggle("active");
+        //     });
+        // }
+
+        btnSelect.addEventListener("click", ()=>{
+            //event.stopPropagation();
+            // let active = document.getElementsByClassName("active");
+
+            // for(i=0; i<active.length; i++){
+            //     console.log(active[i].innerHTML);
+            // }
+            Array.from(document.getElementsByClassName("active")).map(ele=>console.log(ele.innerHTML));
+            
+            let active1 = document.querySelectorAll(".active");
+            active1.forEach(element => {
+                console.log(element.innerHTML);
+            });
+        })
+    </script>
+</body>
+</html>

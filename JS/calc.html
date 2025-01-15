@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>계산기</h1>
+    <input type="text" id="num1">
+    <input type="text" id="num2">
+    <button type="button" id="btnCalc">계산</button>
+    <div id="result" style="border:1px solid blue; height:50px">
+    </div>
+    <script>
+        //계산 버튼 클릭 이벤트
+        //두 입력값의 합을 계산해서 div.result에 출력
+
+        //addEventListener, getElementById, innerHTML       
+        //     let num1 = document.getElementById("num1")
+        //     let num2 = document.getElementById("num2")
+
+        // function calc(){
+        //     let a = Number(num1.value) + Number(num2.value)
+
+        //     result.innerHTML = a
+        // }
+        
+        //계산 버튼 클릭 이벤트
+        btnCalc.addEventListener("click", calc);
+        btnCalc.addEventListener("click", ()=>{alert('end')});
+
+        function calc(){
+            let n1 = document.querySelector('#num1').value;
+            let n2 = document.querySelector('#num2').value;
+
+            let total = Number(n1) + Number(n2)
+            //div = document.querySelector('#result');
+            result.innerHTML = total;
+        }
+    </script>
+</body>
+</html>
