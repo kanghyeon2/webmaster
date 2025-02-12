@@ -15,12 +15,27 @@
     </style>
 </head>
 <body>
-    <div class="active">사과</div>
-    <div>바나나</div>
-    <div>키위</div>
+    <input id="fruit">
+    <div id="box">
+        <div class="active">사과</div>
+        <div>바나나</div>
+        <div>키위</div>
+    </div>
     <button id="btnSelect">선택한 과일은?</button>
     <script>
         document.body.addEventListener("click", ()=>{
+            if(event.target.tagName == "DIV"){
+            event.target.classList.toggle("active");
+        }
+        })
+        document.querySelector("#fruit").addEventListener("keypress", ()=>{
+            if(event.keyCode == 13){
+                const tag = "<div>"+event.target.value + "</div>";
+                document.querySelector("#box").insertAdjacentHTML("beforeend", tag)
+
+            }
+        })
+        document.querySelector("#box").addEventListener("click", ()=>{
             if(event.target.tagName == "DIV"){
             event.target.classList.toggle("active");
         }

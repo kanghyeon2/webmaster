@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classTest.html</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        .active {
+            color : red;
+            font-size: 2em;
+        }
+        .highlight {
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+    <input id="fruit">
+    <div id="box">
+        <div class="active">사과</div>
+        <div>바나나</div>
+        <div>키위</div>
+    </div>
+    <button id="btnSelect">선택한 과일은?</button>
+    <button id="btnCancel">모두선택해제</button>
+    <script>
+        $("#fruit").on("keypress",()=>{
+            if(event.keyCode == 13){
+                const tag = "<div>"+event.target.value + "</div>";
+                $("#box").append(tag)
+
+            }
+        })
+
+        $("#box").on("click","div", ()=>{
+                $(event.target).toggleClass("active");
+            }
+        );
+
+        $("#btnSelect").on("click", ()=>{
+        //event.stopPropagation();
+        //class="active" 인 태그들 찾고
+        var fruits = $(".active");
+        
+        //반복문
+            for(i=0; i<fruits.length; i++) {
+            //선택된 태그들의 내용을 콘솔창에 출력
+                console.log(fruits[i].html);
+            }
+        })
+
+        $("#btnCancel").on("click",()=>{
+            $(".active").removeClass()
+        })
+
+
+    //     document.querySelector("#fruit").addEventListener("keypress", ()=>{
+    //         if(event.keyCode == 13){
+    //             const tag = "<div>"+event.target.value + "</div>";
+    //             document.querySelector("#box").insertAdjacentHTML("beforeend", tag)
+
+    //         }
+    //     });
+    //     document.querySelector("#box").addEventListener("click", ()=>{
+    //         if(event.target.tagName == "DIV"){
+    //             event.target.classList.toggle("active");
+    //             console.log(event.target);
+    //         }
+    //     });
+
+    //   btnSelect.addEventListener("click", function(){
+    //     //event.stopPropagation();
+    //     //class="active" 인 태그들 찾고
+    //     var fruits = document.getElementsByClassName("active");
+        
+    //     //반복문
+    //     for(i=0; i<fruits.length; i++) {
+    //       //선택된 태그들의 내용을 콘솔창에 출력
+    //       console.log(fruits[i].innerHTML);
+    //     }
+
+    //   })
+    </script>
+</body>
+</html>
